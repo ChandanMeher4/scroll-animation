@@ -1,65 +1,104 @@
-import Image from "next/image";
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const container = useRef<HTMLElement | null>(null);
+  const headlineRef = useRef<HTMLHeadingElement | null>(null);
+  const statsRef = useRef<HTMLDivElement[]>([]);
+  const visualRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    // --- 1. Initial Load Animation ---
+    const tl = gsap.timeline();
+
+    tl.from(headlineRef.current, {
+      y: -30,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+    })
+    .from(statsRef.current, {
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out",
+    }, "-=0.6");
+
+    // --- 2. Scroll-Based Animation ---
+    gsap.to(visualRef.current, {
+      // Move from off-screen left to off-screen right
+      x: "140vw", 
+      ease: "none", 
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top top",
+        // 'bottom bottom' finishes the animation right before the section scrolls up
+        end: "bottom bottom", 
+        scrub: 1, 
+      },
+    });
+  }, { scope: container });
+
+  const addToStatsRef = (el: HTMLDivElement | null) => {
+    if (el && !statsRef.current.includes(el)) {
+      statsRef.current.push(el);
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* Increased to 300vh for a longer, smoother scroll duration */}
+      <main ref={container} className="relative w-full h-[300vh] bg-[#0a0a0a] text-white">
+        
+        {/* Sticky wrapper */}
+        <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center p-8 overflow-hidden">
+          
+          {/* Headline - Fixed spacing, wrapping, and centering offset */}
+          <h1 
+            ref={headlineRef} 
+            className="text-4xl md:text-7xl font-bold tracking-[0.3em] md:tracking-[0.5em] text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 whitespace-nowrap pl-[0.3em] md:pl-[0.5em]"
+          >
+            WELCOME ITZFIZZ
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          {/* Impact Metrics */}
+          <div className="flex flex-wrap justify-center gap-12 md:gap-24 z-10">
+            <div ref={addToStatsRef} className="text-center">
+              <h2 className="text-4xl md:text-5xl font-bold text-blue-500">98%</h2>
+              <p className="text-sm uppercase tracking-widest text-gray-400 mt-2">Performance</p>
+            </div>
+            <div ref={addToStatsRef} className="text-center">
+              <h2 className="text-4xl md:text-5xl font-bold text-purple-500">60fps</h2>
+              <p className="text-sm uppercase tracking-widest text-gray-400 mt-2">Motion Polish</p>
+            </div>
+            <div ref={addToStatsRef} className="text-center">
+              <h2 className="text-4xl md:text-5xl font-bold text-emerald-500">Zero</h2>
+              <p className="text-sm uppercase tracking-widest text-gray-400 mt-2">Layout Reflows</p>
+            </div>
+          </div>
+
+          {/* Main Visual Element - Starts securely off-screen to the left */}
+          <div 
+            ref={visualRef} 
+            className="absolute bottom-20 left-[-20vw] w-64 h-32 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-[0_0_40px_rgba(59,130,246,0.4)] flex items-center justify-center backdrop-blur-md border border-white/10"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <p className="font-bold tracking-widest text-white/80">MAIN VISUAL</p>
+          </div>
+
         </div>
       </main>
-    </div>
+
+      {/* Example Next Section to demonstrate natural scroll flow */}
+      <section className="h-screen w-full bg-white text-black flex items-center justify-center">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-widest">NEXT SECTION</h2>
+      </section>
+    </>
   );
 }
