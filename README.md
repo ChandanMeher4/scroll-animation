@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Scroll-Driven Hero Section Animation
 
-## Getting Started
+A performant, scroll-driven hero section built to demonstrate advanced frontend animation techniques, responsive UI development, and smooth scroll interactions.
 
-First, run the development server:
+**Live Demo:** [Insert your Vercel or GitHub Pages link here]  
+**Repository:** [Insert your GitHub repo link here]
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚡ Project Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project was developed as an internship assignment focusing on motion quality, smoothness, and scroll-based interaction logic. The goal was to recreate a premium scroll-animation experience while maintaining strict performance standards.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Key Features
 
-## Learn More
+- **Initial Load Stagger:** Smooth, staggered entrance animations for the headline and statistics using GSAP timelines to avoid abrupt visual loading.
+- **Scrubbed Scroll Animation:** The main visual element's movement is tied directly to the user's scroll progress (`scrub: 1`) rather than a time-based autoplay, creating a natural and fluid interaction.
+- **Zero Layout Reflows:** Animations heavily utilize CSS `transform` properties (`translate`, `scale`) via GSAP to ensure smooth 60fps performance without triggering expensive browser layout recalculations.
+- **Sticky Context:** Utilizes CSS `position: sticky` within a `300vh` container to keep the hero section firmly in the viewport while the scroll triggers the horizontal animation.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework:** Next.js (React)
+- **Language:** TypeScript (for strict type-safety and better developer experience)
+- **Styling:** Tailwind CSS (for rapid, utility-first styling and responsive design)
+- **Animation:** GSAP & ScrollTrigger (`@gsap/react`)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Running Locally
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+    ```
+
+2. **Navigate into the directory:**
+    ```bash
+    cd YOUR_REPO_NAME
+    ```
+
+3. **Install the dependencies:**
+    ```bash
+    npm install
+    ```
+
+4. **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+5. **View the project:** Open http://localhost:3000 in your browser.
+
+---
+
+## 🧠 Technical Decisions & Challenges
+
+**Text Wrapping & Tracking:** Combining CSS tracking (letter-spacing) with manual spaces in the DOM can cause uneven centering and awkward line breaks. This was resolved by using a continuous string (WELCOME ITZFIZZ), applying Tailwind's `tracking-[0.5em]`, preventing line breaks with `whitespace-nowrap`, and applying an offset padding to ensure mathematically perfect centering.
+
+**Scroll Exhaustion:** To ensure the animated element successfully completes its trajectory before the hero section scrolls out of view, the trigger end point was carefully mapped to "bottom bottom", syncing the end of the animation with the exact moment the sticky container releases.
