@@ -2,8 +2,8 @@
 
 A performant, scroll-driven hero section built to demonstrate advanced frontend animation techniques, responsive UI development, and smooth scroll interactions.
 
-**Live Demo:** [Insert your Vercel or GitHub Pages link here]  
-**Repository:** [Insert your GitHub repo link here]
+**Live Demo:** https://scroll-animation-sigma.vercel.app/  
+**Repository:** https://github.com/ChandanMeher4/scroll-animation
 
 ---
 
@@ -33,12 +33,12 @@ This project was developed as an internship assignment focusing on motion qualit
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+    git clone https://github.com/ChandanMeher4/scroll-animation.git
     ```
 
 2. **Navigate into the directory:**
     ```bash
-    cd YOUR_REPO_NAME
+    cd scroll-animation
     ```
 
 3. **Install the dependencies:**
