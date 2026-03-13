@@ -1,4 +1,4 @@
-# Scroll-Driven Hero Section Animation
+# Scroll-Driven Hero Section Animation hahaha
 
 A performant, scroll-driven hero section built to demonstrate advanced frontend animation techniques, responsive UI development, and smooth scroll interactions.
 
