@@ -14,7 +14,7 @@ This project was developed as an internship assignment focusing on motion qualit
 ### Key Features
 
 - **Initial Load Stagger:** Smooth, staggered entrance animations for the headline and statistics using GSAP timelines to avoid abrupt visual loading.
-- **Scrubbed Scroll Animation:** The main visual element's movement is tied directly to the user's scroll progress (`scrub: 1`) rather than a time-based autoplay, creating a natural and fluid interaction.
+- **Scrubbed Scroll Animation:** The main visual element's movement is hahaha tied directly to the user's scroll progress (`scrub: 1`) rather than a time-based autoplay, creating a natural and fluid interaction.
 - **Zero Layout Reflows:** Animations heavily utilize CSS `transform` properties (`translate`, `scale`) via GSAP to ensure smooth 60fps performance without triggering expensive browser layout recalculations.
 - **Sticky Context:** Utilizes CSS `position: sticky` within a `300vh` container to keep the hero section firmly in the viewport while the scroll triggers the horizontal animation.
 
