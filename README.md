@@ -20,7 +20,7 @@ This project was developed as an internship assignment focusing on motion qualit
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack for this project
 
 - **Framework:** Next.js (React)
 - **Language:** TypeScript (for strict type-safety and better developer experience)
