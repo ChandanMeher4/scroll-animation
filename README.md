@@ -9,7 +9,7 @@ A performant, scroll-driven hero section built to demonstrate advanced frontend 
 
 ## ⚡ Project Overview
 
-This project was developed as an internship assignment focusing on motion quality, smoothness, and scroll-based interaction logic. The goal was to recreate a premium scroll-animation experience while maintaining strict performance standards.
+This project was developed as an internship assignment focusing on motion quality, smoothness, and scroll-based interaction logic. The goal was to recreate a premium scroll-animation experience while maintaining strict performance standards. this is a test line
 
 ### Key Features
 
