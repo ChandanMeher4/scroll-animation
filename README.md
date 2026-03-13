@@ -21,7 +21,7 @@ This project was developed as an internship assignment focusing on motion qualit
 ---
 
 ## 🛠️ Tech Stack
-
+hi2e2hoi;1o
 - **Framework:** Next.js (React)
 - **Language:** TypeScript (for strict type-safety and better developer experience)
 - **Styling:** Tailwind CSS (for rapid, utility-first styling and responsive design)
