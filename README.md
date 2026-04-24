@@ -60,3 +60,5 @@ This project was developed as an internship assignment focusing on motion qualit
 **Text Wrapping & Tracking:** Combining CSS tracking (letter-spacing) with manual spaces in the DOM can cause uneven centering and awkward line breaks. This was resolved by using a continuous string (WELCOME ITZFIZZ), applying Tailwind's `tracking-[0.5em]`, preventing line breaks with `whitespace-nowrap`, and applying an offset padding to ensure mathematically perfect centering.
 
 **Scroll Exhaustion:** To ensure the animated element successfully completes its trajectory before the hero section scrolls out of view, the trigger end point was carefully mapped to "bottom bottom", syncing the end of the animation with the exact moment the sticky container releases.
+
+hello, this is a test line
